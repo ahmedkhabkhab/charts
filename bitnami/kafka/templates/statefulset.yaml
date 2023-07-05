@@ -373,7 +373,7 @@ spec:
               value: {{ .Values.superUsers | quote }}
             {{- if .Values.kraft.enabled }}
             - name: KAFKA_KRAFT_CLUSTER_ID
-              value: {{ .Values.kraft.clusterId | quote }}  
+              value: {{ .Values.kraft.clusterId | default (uuidv4 | replace "-" ""| b64enc | substr 1 22) | quote }}
             - name: KAFKA_CFG_PROCESS_ROLES
               value: {{ .Values.kraft.processRoles | quote }}  
             - name: KAFKA_CFG_CONTROLLER_LISTENER_NAMES

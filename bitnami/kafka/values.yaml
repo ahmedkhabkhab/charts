@@ -1753,7 +1753,10 @@ kraft:
   ## Generate with `cat /proc/sys/kernel/random/uuid | tr -d '-' | base64 | cut -b 1-22`. Run `export LC_ALL=C` before if you generate it on MacOS.
   ## Example: k2yipv1sRue7z2_Y3o976A
   ##
-  clusterId: "kafka_cluster_id_test1"
+  clusterId: ""
+  ## @param kraft.generatedClusterId. You must set it to true if kraft.clusterId is not set.
+  ##
+  generatedClusterId: true
   ## @param kraft.controllerQuorumVoters Quorum voters of Kafka Kraft cluster. Use it for nodes with 'broker' role only.
   ## Example: 1@controller1.example.com:9095,2@controller2.example.com:9095
   ##

@@ -539,9 +539,9 @@ kafka: Kraft mode
 
 {{/* Validate ClusterId value. It must be defined if Kraft mode is used.  */}}
 {{- define "kafka.validateValues.ClusterIdDefinedIfKraft" -}}
-{{- if and .Values.kraft.enabled (not .Values.kraft.clusterId) (gt (int .Values.replicaCount) 1) }}
+{{- if and .Values.kraft.enabled (not .Values.kraft.clusterId) (gt (int .Values.replicaCount) 1) (not .Values.kraft.generatedClusterId) }}
 kafka: Kraft mode
-    .Values.kraft.clusterId must not be empty if .Values.kraft.enabled set to true and .Values.replicaCount > 1.
+    .Values.kraft.clusterId must not be empty if .Values.kraft.enabled set to true and .Values.replicaCount > 1 and .Values.kraft.generatedClusterId set to false.
 {{- end -}}
 {{- end -}}
 
